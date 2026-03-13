@@ -6,16 +6,14 @@
   height: 64px;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 16px;
 }
 
 .header{
   display: flex;
   width: 100%;
+  max-width: 1280px;
   align-items: center;
   justify-content: space-between;
-  padding-left:64px;
-  padding-right: 64px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -24,4 +22,26 @@
   width: 100%;
   height: 60px;
   object-fit: cover;
+}
+
+@media (max-width: 1024px){
+  .header{
+    padding-left:32px;
+    padding-right:32px;
+  }
+
+  .logo{
+    height: 50px;
+  }
+}
+
+@media (max-width: 600px){
+  .header{
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  .logo{
+    height: 40px;
+  }
 }

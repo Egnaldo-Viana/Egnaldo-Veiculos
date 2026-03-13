@@ -3,6 +3,7 @@ import style from './home.module.css';
 import { Container } from '../../components/container';
 import supabase from '../../services/supabaseClient';
 import { Link } from 'react-router';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
 interface VeiculosProps {
   id: string;
@@ -28,6 +29,7 @@ export function Home() {
 
   async function handleSearchVeiculos() {
     if (input === '') {
+      alert('digite alguma coisa no minput');
       loadVeiculo();
       return;
     }
@@ -72,8 +74,10 @@ export function Home() {
     <>
       <div className={style.hero}>
         <h1 className={style.title}>
-          Encontre o veículo dos seus <span>sonhos</span>
+          Encontre o veículo dos seus{' '}
+          <span className={style.titleSpan}>sonhos</span>
         </h1>
+
         <p className={style.subtitle}>
           Milhares de ofertas de seminovos e novos com garantia em todo o Brasil
         </p>
@@ -91,47 +95,57 @@ export function Home() {
         </section>
       </div>
 
-      <Container>
-        <main className={style.Veiculolist}>
-          {veiculos.map((veiculo) => (
-            <Link key={veiculo.id} to={`veiculo/${veiculo.id}`}>
-              <article className={style.Veiculocard}>
-                <div
-                  className={style.imageSkeleton}
-                  style={{
-                    display: loadImages.includes(veiculo.id) ? 'none' : 'block',
-                  }}
-                ></div>
-                <img
-                  className={style.veiculoImage}
-                  src={veiculo.images?.[0]?.url}
-                  alt={veiculo.name}
-                  onLoad={() => handleImageLoad(veiculo.id)}
-                  style={{
-                    display: loadImages.includes(veiculo.id) ? 'block' : 'none',
-                  }}
-                />
-                <div className={style.infoVeiculo}>
-                  <p className={style.nameVeiculo}>{veiculo.name}</p>
-                  <span className={style.veiculoMeta}>
-                    {veiculo.year} - {veiculo.km} km
-                  </span>
-                </div>
-                <div className={style.priceBox}>
+      <div className={style.containerVeiculo}>
+        <Container>
+          <main className={style.veiculoList}>
+            {veiculos.map((veiculo) => (
+              <Link key={veiculo.id} to={`veiculo/${veiculo.id}`}>
+                <article className={style.veiculoCard}>
+                  <div
+                    className={style.imageSkeleton}
+                    style={{
+                      display: loadImages.includes(veiculo.id)
+                        ? 'none'
+                        : 'block',
+                    }}
+                  ></div>
+                  <img
+                    className={style.veiculoImage}
+                    src={veiculo.images?.[0]?.url}
+                    alt={veiculo.name}
+                    onLoad={() => handleImageLoad(veiculo.id)}
+                    style={{
+                      display: loadImages.includes(veiculo.id)
+                        ? 'block'
+                        : 'none',
+                    }}
+                  />
+                  <div className={style.infoVeiculo}>
+                    <p className={style.nameVeiculo}>{veiculo.name}</p>
+                    <span className={style.veiculoMeta}>
+                      {veiculo.year} - {veiculo.km} km
+                    </span>
+                  </div>
+
                   <p className={style.priceLabel}>Preço à vista</p>
-                  <strong className={style.priceValue}>
-                    {Number(veiculo.price).toLocaleString('pt-BR', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    })}
-                  </strong>
-                  <span className={style.cityVeiculo}>{veiculo.city}</span>
-                </div>
-              </article>
-            </Link>
-          ))}
-        </main>
-      </Container>
+                  <div className={style.priceBox}>
+                    <strong className={style.priceValue}>
+                      {Number(veiculo.price).toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                      })}
+                    </strong>
+                    <span className={style.cityVeiculo}>
+                      <FaMapMarkerAlt />
+                      {veiculo.city}
+                    </span>
+                  </div>
+                </article>
+              </Link>
+            ))}
+          </main>
+        </Container>
+      </div>
     </>
   );
 }
