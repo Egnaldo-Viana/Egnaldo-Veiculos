@@ -1,3 +1,4 @@
+import React from 'react';
 import style from './login.module.css';
 import acesso from '../../assets/acesso.png';
 import cadeado from '../../assets/cadeado.png';
@@ -6,7 +7,8 @@ import { Input } from '../../components/input';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import supabase from '../../services/supabaseClient';
 
 const schema = z.object({
   email: z
@@ -19,6 +21,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export function Login() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -28,10 +31,27 @@ export function Login() {
     mode: 'onChange',
   });
 
-  function onSubmit(data: FormData) {
-    console.log(data);
-    console.log('ta funcionando');
+  async function onSubmit(data: FormData) {
+    const { email, password } = data;
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) {
+      console.log('erro ao fazer login: ', error.message);
+      return;
+    }
+    navigate('/dashboard');
   }
+
+  React.useEffect(() => {
+    async function handleLogout() {
+      await supabase.auth.signOut();
+    }
+
+    handleLogout();
+  }, []);
 
   return (
     <div className={style.container}>
