@@ -1,0 +1,14 @@
+.input{
+ width: 100%;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  height: 44px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.error{
+  color: #e11d48;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
