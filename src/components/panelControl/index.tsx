@@ -15,6 +15,7 @@ export function PanelControl() {
       <Link to="/" className={style.logoWrapper}>
         <img className={style.logo} src={logo} alt="logo do site" />
       </Link>
+
       <nav className={style.navegacao}>
         <Link to="/dashboard" className={style.textDash}>
           <img src={iconDash} alt="icone do botão Dashboard" />

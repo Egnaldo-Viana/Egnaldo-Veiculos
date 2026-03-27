@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { PanelControl } from '../panelControl';
 import style from './panelLayout.module.css';
 

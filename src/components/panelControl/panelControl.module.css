@@ -52,3 +52,57 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+  }
+
+  .logoWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .navegacao {
+   display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;
+    gap: 16px;
+    flex: 1; 
+  }
+
+  .textDash,
+  .textCadas {
+    margin: 0;
+    padding: 6px;
+    background: none;
+    font-size: 0;
+  }
+
+  .textDash img,
+  .textCadas img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .button {
+    width: auto;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .logo {
+    margin: 0;
+  }
+}
