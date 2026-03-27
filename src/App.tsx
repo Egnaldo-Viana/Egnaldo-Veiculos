@@ -20,24 +20,24 @@ const router = createBrowserRouter([
         path: '/veiculo/:id',
         element: <VeiculoDetail />,
       },
-      {
-        path: '/dashboard',
-        element: (
-          <Private>
-            {' '}
-            <Dashboard />
-          </Private>
-        ),
-      },
-      {
-        path: '/dashboard/new',
-        element: (
-          <Private>
-            <New />
-          </Private>
-        ),
-      },
     ],
+  },
+  {
+    path: '/dashboard',
+    element: (
+      <Private>
+        {' '}
+        <Dashboard />
+      </Private>
+    ),
+  },
+  {
+    path: '/dashboard/new',
+    element: (
+      <Private>
+        <New />
+      </Private>
+    ),
   },
   {
     path: '/login',

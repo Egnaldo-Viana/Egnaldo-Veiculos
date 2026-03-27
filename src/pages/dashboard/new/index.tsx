@@ -1,7 +1,12 @@
+import { PanelLayout } from '../../../components/panelLayout';
+import style from './new.module.css';
+
 export function New() {
   return (
-    <div>
-      <p>Pagina novo veiculo</p>
-    </div>
+    <PanelLayout>
+      <div className={style.container}>
+        <p>Pagina Cadastro veiculo</p>
+      </div>
+    </PanelLayout>
   );
 }
