@@ -1,4 +1,125 @@
-.container{
-  background-color: green;
+
+.whapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+.title{
+  font-size: 24px;
+  font-weight: bold;
+  color: #0f172a;
+}
+
+.subTitle{
+  font-size: 16px;
+  color: #64748b;
+}
+
+.button{
+  width: 100%;
+  max-width:200px ;
+  text-decoration: none;
+  background-color: #000;
   color: #fff;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 4px;  
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.carContainer{
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.carCads{
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.buttonDelete{
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.buttonDelete img {
+  width: 60px; 
+  height: 60px;
+}
+
+.carImage{
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.carDetail {
+  margin: 20px;
+}
+
+.carDetail h2{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 20px;
+}
+
+.carInfo{
+  display: flex;
+  justify-content: space-between;
+}
+
+.carInfo span{
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.carInfo p{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
+@media (max-width: 1024px) {
+  .carContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 640px) {
+  .carContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .whapper {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .button {
+    max-width: 100%;
+  }
+
+  .buttonDelete img {
+    width: 50px;
+    height: 50px;
+  }
 }
